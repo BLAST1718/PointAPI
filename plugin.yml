@@ -2,7 +2,7 @@ name: PointAPI
 main: onebone\pointapi\PointAPI
 api: [3.0.0]
 version: 2.0.9
-author: onebone | Edit By Nờ Cờ Dờ (NCD) (Danh Miner)
+author: onebone | Edit By Nờ Cờ Dờ (NCD) (Danh Miner) | Fixed by LamPocketVN
 permissions:
  pointapi.*:
   default: op
