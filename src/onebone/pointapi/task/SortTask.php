@@ -21,10 +21,15 @@
 namespace onebone\pointapi\task;
 
 use pocketmine\scheduler\AsyncTask;
+
 use pocketmine\Server;
 use pocketmine\Player;
+use pocketmine\command\CommandSender;
+
 
 use onebone\pointapi\PointAPI;
+use onebone\pointapi\task\support;
+
 
 class SortTask extends AsyncTask{
 	private $sender, $pointData, $addOp, $page, $ops, $banList;
@@ -81,23 +86,31 @@ class SortTask extends AsyncTask{
 		return $ret;
 	}
 
-	public function onCompletion(Server $server){
-		if($this->sender === "CONSOLE" or ($player = $server->getPlayerExact($this->sender)) instanceof Player){ // TODO: Rcon
+	public function onCompletion($server){
+			$player = $server->getPlayerExact($this->sender);
 			$plugin = PointAPI::getInstance();
-
 			$output = ($plugin->getMessage("toppoint-tag", [$this->page, $this->max], $this->sender)."\n");
 			$message = ($plugin->getMessage("toppoint-format", [], $this->sender)."\n");
-
 			foreach(unserialize($this->topList) as $n => $list){
 				$output .= str_replace(["%1", "%2", "%3"], [$n, $list[0], $list[1]], $message);
 			}
 			$output = substr($output, 0, -1);
-
 			if($this->sender === "CONSOLE"){
 				$plugin->getLogger()->info($output);
 			}else{
-				$player->sendMessage($output);
+			$formapi = $plugin->getServer()->getPluginManager()->getPlugin("FormAPI");
+		    $form = $formapi->createCustomForm(function ($player, $data) use ($plugin)
+                {
+		        if (!($data[0] === null))
+		        {
+                    $page = $data[0];
+                    $plugin->getServer()->dispatchCommand($player, "toppoint " . $page);
+                }
+		    });
+			$form->setTitle("§6§lTOP Point");
+			$form->addLabel($output);
+			$form->addInput("Go to page");
+			$form->sendToPlayer($player);
 			}
-		}
 	}
 }

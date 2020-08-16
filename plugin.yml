@@ -1,8 +1,9 @@
-name: PointAPI
+﻿name: PointAPI
 main: onebone\pointapi\PointAPI
-api: [3.0.0]
-version: 1.0.1
-author: onebone | Fixed by LamPocketVN
+api: [3.9.0]
+version: 2.1.0
+load: STARTUP
+author: onebone | Fixed and Update by LamPocketVN
 permissions:
  pointapi.*:
   default: op

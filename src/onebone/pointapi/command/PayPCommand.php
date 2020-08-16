@@ -55,7 +55,7 @@ class PayPCommand extends Command{
 			return true;
 		}
 
-		$this->plugin->getServer()->getPluginManager()->callEvent($ev = new PayPointEvent($this->plugin, $sender->getName(), $player, $amount));
+		$this->plugin->getServer()->getPluginManager()->callEvent($ev = new PayPEvent($this->plugin, $sender->getName(), $player, $amount));
 
 		$result = PointAPI::RET_CANCELLED;
 		if(!$ev->isCancelled()){
