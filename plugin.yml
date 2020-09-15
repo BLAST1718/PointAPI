@@ -3,7 +3,7 @@ main: onebone\pointapi\PointAPI
 api: [3.9.0]
 version: 1.0.3
 load: STARTUP
-author: onebone | Fixed and Update by LamPocketVN
+author: onebone | Moded by LamPocketVN
 permissions:
  pointapi.*:
   default: op
