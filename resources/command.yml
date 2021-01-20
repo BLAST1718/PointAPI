@@ -1,18 +1,18 @@
 setpoint:
-- setpoint
+- setshards
 seepoint:
-- seepoint
+- seeshards
 mypoint:
-- mypoint
+- myshards
 payp:
-- payp
+- payshards
 givepoint:
-- givepoint
+- giveshards
 toppoint:
-- toppoint
+- topshards
 setlangp:
-- setlangp
+- setlangshards
 takepointp:
-- takepointp
+- takeshards
 mystatusp:
-- mystatusp
+- mystatus
